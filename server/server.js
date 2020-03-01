@@ -9,15 +9,10 @@ const app = express();
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
-app.use(require('./routes/usuario.js'));
+//Configuracion global de rutas
+app.use(require('./routes/index.js'));
 
-mongoose.connect(process.env.URLDB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-}, (err, res) => {
-
+mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }, (err, res) => {
     if (err) throw err;
     console.log('Base de datos ONLINE');
 });
